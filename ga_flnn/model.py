@@ -28,8 +28,8 @@ class Model:
 
     def draw_predict(self):
         plt.figure(2)
-        plt.plot(self.real_inverse[:, 0][:200], color='#009FFD', linewidth=2.5)
-        plt.plot(self.pred_inverse[:, 0][:200], color='#FFA400', linewidth=2.5)
+        plt.plot(self.real_inverse[:, 0][0:200], color='#009FFD', linewidth=2.5)
+        plt.plot(self.pred_inverse[:, 0][0:200], color='#FFA400', linewidth=2.5)
         plt.ylabel('CPU')
         plt.xlabel('Timestamp')
         plt.legend(['Actual', 'Prediction'], loc='upper right')
@@ -40,6 +40,10 @@ class Model:
     def write_to_result_file(self):
         with open(self.pathsave + self.textfilename + '.txt', 'a') as file:
             file.write("{0}  -  {1}  -  {2}\n".format(self.filename, self.mae, self.rmse))
+
+    def save_file_csv(self):
+        t1 = np.concatenate( (self.pred_inverse, self.real_inverse), axis = 1)
+        np.savetxt(self.pathsave + self.filename + ".csv", t1, delimiter=",")
     
     def preprocessing_data(self):
         data, train_idx, test_idx, sliding, expand_func = self.data, self.train_idx, self.test_idx, self.sliding, self.expand_func
@@ -72,11 +76,13 @@ class Model:
         self.pred_inverse = self.scaler.inverse_transform(pred)
         self.real_inverse = self.scaler.inverse_transform(self.y_test)
 
-        self.mae = mean_absolute_error(self.real_inverse, self.pred_inverse)
-        self.rmse = np.sqrt(mean_squared_error(self.real_inverse, self.pred_inverse))
+        self.mae = mean_absolute_error(self.pred_inverse, self.real_inverse)
+        self.rmse = np.sqrt(mean_squared_error(self.pred_inverse, self.real_inverse))
 
         print(self.mae)
 
         self.draw_predict()
 
         self.write_to_result_file()
+
+        self.save_file_csv()

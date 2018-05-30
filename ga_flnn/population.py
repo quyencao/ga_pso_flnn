@@ -64,8 +64,9 @@ class Population:
                 c2 = self.population[self.get_index(fitnesses, sum_fitness)]
 
                 if random.uniform(0, 1) < self.pc:
-                    w1 = 0.7 * c1.w + 0.3 * c2.w
-                    w2 = 0.3 * c2.w + 0.7 * c1.w
+                    r = random.uniform(0, 1)
+                    w1 = r * c1.w + (1 - r) * c2.w
+                    w2 = r * c2.w + (1 - r) * c1.w
 
                     c1 = Chormesome(d, w1)
                     c2 = Chormesome(d, w2)

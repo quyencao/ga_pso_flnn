@@ -9,7 +9,7 @@ from expand_data import ExpandData
 
 class Model:
     def __init__(self, data_original, train_idx, test_idx, sliding, expand_func = 0,
-                 activation = 2, data_filename= "3_minutes", test = "tn1"):
+                 activation = 2, data_filename= "3_minutes", test = "flnn"):
         self.data_original = data_original
         self.train_idx = train_idx
         self.test_idx = test_idx
@@ -18,9 +18,9 @@ class Model:
         self.scaler = MinMaxScaler()
         self.expand_func = expand_func
         self.activation = activation
-        # self.pathsave = "test/" + test + "/"
-        # self.textfilename = test
-        # self.filename = "{0}-GA-FLNN-sliding_{1}-expand_func_{2}-pop_size_{3}-pc_{4}-pm_{5}-activation_{6}".format(data_filename, sliding, expand_func, pop_size, pc, pm, activation)
+        self.textfilename = test
+        self.pathsave = "test/" + test + "/"
+        self.filename = "{0}-FLNN-sliding_{1}-expand_func_{2}-activation_{3}".format(data_filename, sliding, expand_func, activation)
 
     def preprocessing_data(self):
         data, train_idx, test_idx, sliding, expand_func = self.data, self.train_idx, self.test_idx, self.sliding, self.expand_func
@@ -48,8 +48,8 @@ class Model:
         plt.ylabel('CPU')
         plt.xlabel('Timestamp')
         plt.legend(['Actual', 'Prediction'], loc='upper right')
-        # plt.savefig(self.pathsave + self.filename + ".png")
-        plt.show()
+        plt.savefig(self.pathsave + self.filename + ".png")
+        # plt.show()
         plt.close()
 
     def write_to_result_file(self):
@@ -66,7 +66,15 @@ class Model:
         return np.where(x < 0, 0, x)
 
     def elu(self, x, alpha = 0.9):
-        return np.where(x < 0, alpha * (np.exp(x) - 1), x)     
+        return np.where(x < 0, alpha * (np.exp(x) - 1), x)    
+
+    def save_file_csv(self):
+        t1 = np.concatenate( (self.pred_inverse, self.real_inverse), axis = 1)
+        np.savetxt(self.pathsave + self.filename + '.csv', t1, delimiter=",") 
+
+    def write_to_result_file(self):
+        with open(self.pathsave + self.textfilename + '.txt', 'a') as file:
+            file.write("{0}  -  {1}  -  {2}\n".format(self.filename, self.mae, self.rmse))
 
     def activation_output(self, z):
         if self.activation == 0:
@@ -105,7 +113,7 @@ class Model:
             z = np.dot(self.X_train, w) + b
             a = self.activation_output(z)
 
-            print(mean_absolute_error(a, self.y_train))
+            print("> Epoch {0}: MAE {1}".format(e, mean_absolute_error(a, self.y_train)))
 
             # Backpropagation
             da = a - self.y_train
@@ -114,15 +122,9 @@ class Model:
             db = 1./m * np.sum(dz, axis = 0, keepdims=True)
             dw = 1./m * np.matmul(self.X_train.T, dz)
 
-            # print(db)
-
-            # print(dw)
-
-            # break
-
             # Update weights
-            w -= 0.3 * dw
-            b -= 0.3 * db
+            w -= 0.2 * dw
+            b -= 0.2 * db
 
         z = np.dot(self.X_test, w) + b
         a = self.activation_output(z)
@@ -130,16 +132,20 @@ class Model:
         self.pred_inverse = self.scaler.inverse_transform(a)
         self.real_inverse = self.scaler.inverse_transform(self.y_test)
 
-        print(mean_absolute_error(self.pred_inverse, self.real_inverse))
+        self.mae = mean_absolute_error(self.pred_inverse, self.real_inverse)
+        self.rmse = np.sqrt(mean_squared_error(self.pred_inverse, self.real_inverse))
+
+        self.save_file_csv()
+        self.write_to_result_file()
 
         self.draw_predict()
 
 
-dt = pd.read_csv('data_resource_usage_8Minutes_6176858948.csv', usecols=[3], names=['cpu'])
+# dt = pd.read_csv('data_resource_usage_10Minutes_6176858948.csv', usecols=[3], names=['cpu'])
 
-sliding = 2
-train_idx = 4160
-test_idx = 1040
+# sliding = 2
+# train_idx = 3280
+# test_idx = 820
 
-model = Model(dt.values, train_idx, test_idx, sliding)
-model.train()
+# model = Model(dt.values, train_idx, test_idx, sliding)
+# model.train()

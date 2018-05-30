@@ -15,8 +15,8 @@ foldername = 'data/'
 list_idx = [(3280, 820)]
 c1s = [0.7, 1.2, 1.5, 1.7, 2]
 c2s = [0.7, 1.2, 1.5, 1.7, 2]
-sliding_windows = [5, 4, 3]
-pop_sizes = [20, 40, 60, 80, 100, 120, 140, 160, 180, 200]
+sliding_windows = [2]
+pop_sizes = [100, 120, 140, 160, 180, 200]
 
 for index, filename in enumerate(filenames):
 
@@ -33,6 +33,6 @@ for index, filename in enumerate(filenames):
             for c2 in c2s:
                 p = PSOModel(dataset_original, idx[0], idx[1], sliding_windows[0],
                              expand_func=0, pop_size=pop_size, c1=c1, c2=c2,
-                             activation=1, data_filename=f, test="tn4")
+                             activation=3, data_filename=f, test="tn4")
                 p.train(epochs=1000)
 

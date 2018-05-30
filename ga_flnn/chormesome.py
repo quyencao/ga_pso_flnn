@@ -31,7 +31,7 @@ class Chormesome:
         a = self.activation_output(z)
         mae = mean_absolute_error(y, a)
 
-        self.fitness = 1 / mae
+        self.fitness = 1.0 / mae
         return self.fitness
     
     def tanh(self, x):
@@ -43,7 +43,7 @@ class Chormesome:
     def relu(self, x):
         return np.where(x < 0, 0, x)
 
-    def elu(self, x, alpha = 0.5):
+    def elu(self, x, alpha = 0.9):
         return np.where(x < 0, alpha * (np.exp(x) - 1), x)
 
     def predict(self, X):

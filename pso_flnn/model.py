@@ -35,6 +35,10 @@ class Model:
         # plt.show()
         plt.close()
 
+    def save_file_csv(self):
+        t1 = np.concatenate( (self.pred_inverse, self.real_inverse), axis = 1)
+        np.savetxt(self.pathsave + self.filename + ".csv", t1, delimiter=",")
+
     def write_to_result_file(self):
         with open(self.pathsave + self.textfilename + '.txt', 'a') as file:
             file.write("{0}  -  {1}  -  {2}\n".format(self.filename, self.mae, self.rmse))
@@ -70,11 +74,13 @@ class Model:
         self.pred_inverse = self.scaler.inverse_transform(pred)
         self.real_inverse = self.scaler.inverse_transform(self.y_test)
 
-        self.mae = mean_absolute_error(self.real_inverse, self.pred_inverse)
-        self.rmse = np.sqrt(mean_squared_error(self.real_inverse, self.pred_inverse))
+        self.mae = mean_absolute_error(self.real_inverse[:, 0], self.pred_inverse[:, 0])
+        self.rmse = np.sqrt(mean_squared_error(self.real_inverse[:, 0], self.pred_inverse[:, 0]))
 
         print(self.mae)
 
         self.draw_predict()
 
         self.write_to_result_file()
+
+        self.save_file_csv()

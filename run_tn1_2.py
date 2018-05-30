@@ -1,6 +1,6 @@
 from ga_flnn.model import Model as GAModel
 from pso_flnn.model import Model as PSOModel
-from flnn.flnn import FLNN
+from flnn.model import Model as FLNNModel
 import pandas as pd
 
 filename1 = 'data_resource_usage_3Minutes_6176858948.csv'
@@ -16,7 +16,7 @@ foldername = 'data/'
 # parameters
 list_idx = [(10560, 2640), (6640, 1660), (4160, 1040), (3280, 820)]
 sliding_windows = [2, 3, 5]
-methods = ['FLNN', 'GA', 'PSO']
+methods = ['GA', 'FLNN', 'PSO']
 
 for index, filename in enumerate(filenames):
 
@@ -39,6 +39,6 @@ for index, filename in enumerate(filenames):
                             activation=1, data_filename=f, test="tn1")
                 p.train(epochs=1000)
             elif method == 'FLNN':
-                p = FLNN(dataset_original, idx[0], idx[0] + idx[1], sw, data_filename=f, test="tn1")
-                p.train(epochs=1000)
+                p = FLNNModel(dataset_original, idx[0], idx[1], sw, expand_func = 0, activation = 1, data_filename=f, test="tn1")
+                p.train(epochs=10000)
 
