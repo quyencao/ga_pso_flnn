@@ -7,13 +7,13 @@ filename3 = 'data_resource_usage_8Minutes_6176858948.csv'
 filename4 = 'data_resource_usage_10Minutes_6176858948.csv'
 
 filenames = [filename4]
-fses = ['5_minutes']
+fses = ['10_minutes']
 
 foldername = 'data/'
 
 # parameters
 list_idx = [(3280, 820)]
-sliding_windows = [2, 3, 5]
+sliding_windows = [4]
 pop_sizes = [100]
 cross_rates = [0.7, 0.75, 0.8, 0.85, 0.9]
 mutate_rates = [0.01, 0.02, 0.03, 0.04, 0.05]

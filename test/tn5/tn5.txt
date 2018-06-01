@@ -74,3 +74,11 @@
 5_minutes-GA-FLNN-sliding_2-expand_func_0-pop_size_200-pc_0.7-pm_0.01-activation_1  -  0.288959243829  -  0.483310946805
 5_minutes-GA-FLNN-sliding_2-expand_func_0-pop_size_200-pc_0.7-pm_0.02-activation_1  -  0.28545375231  -  0.470601425829
 5_minutes-GA-FLNN-sliding_2-expand_func_0-pop_size_100-pc_0.7-pm_0.01-activation_1  -  0.299555510691  -  0.522693007167
+10_minutes-GA-FLNN-sliding_2-expand_func_0-pop_size_100-pc_0.7-pm_0.01-activation_1  -  0.318398095804  -  0.550994844708
+10_minutes-GA-FLNN-sliding_2-expand_func_0-pop_size_100-pc_0.7-pm_0.02-activation_1  -  0.305044830491  -  0.52824946447
+10_minutes-GA-FLNN-sliding_2-expand_func_0-pop_size_100-pc_0.7-pm_0.03-activation_1  -  0.304039597377  -  0.52923707946
+10_minutes-GA-FLNN-sliding_2-expand_func_0-pop_size_100-pc_0.7-pm_0.04-activation_1  -  0.305991432543  -  0.531062243583
+10_minutes-GA-FLNN-sliding_5-expand_func_0-pop_size_100-pc_0.7-pm_0.01-activation_1  -  0.302301896836  -  0.538459303427
+10_minutes-GA-FLNN-sliding_5-expand_func_0-pop_size_100-pc_0.7-pm_0.02-activation_1  -  0.303037157502  -  0.537014993283
+10_minutes-GA-FLNN-sliding_4-expand_func_0-pop_size_100-pc_0.7-pm_0.01-activation_1  -  0.303247944865  -  0.526890010932
+10_minutes-GA-FLNN-sliding_4-expand_func_0-pop_size_100-pc_0.7-pm_0.02-activation_1  -  0.303380216314  -  0.529581338386

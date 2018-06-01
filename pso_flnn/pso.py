@@ -26,9 +26,11 @@ class Population:
             c = Particle(d, activation = self.activation)
             self.population.append(c)
 
-    def train(self, X, y, epochs=1000):
+    def train(self, X, y, X_valid, y_valid, epochs=1000):
         best_particle = None
         best_fitness = -1
+        best_particle_valid = None
+        best_fitness_valid = -1
 
         d = X.shape[1]
         self.init_pop(d)
@@ -45,8 +47,13 @@ class Population:
                     best_fitness = fitness
                     best_particle = copy.deepcopy(p)
 
+            valid_fitness = best_particle.compute_fitness(X_valid, y_valid)
 
-            print("> Epoch {0}: Best fitness {1}".format(e + 1, best_fitness))
+            if valid_fitness > best_fitness_valid:
+                best_fitness_valid = valid_fitness
+                best_particle_valid = copy.deepcopy(best_particle)
+
+            print("> Epoch {0}: Best fitness {1}   -   Best valid fitness {2}".format(e + 1, best_fitness, best_fitness_valid))
 
             for p in self.population:
                 # self.w = (1 - e / epochs) * (self.w_max - self.w_min) + self.w_min
@@ -63,4 +70,4 @@ class Population:
                 p.v = copy.deepcopy(v_new)
                 p.x = copy.deepcopy(x_new)
 
-        return best_particle
+        return best_particle_valid

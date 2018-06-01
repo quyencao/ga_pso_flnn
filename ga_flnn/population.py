@@ -27,9 +27,11 @@ class Population:
             if r < 0:
                 return idx
 
-    def train(self, X, y, epochs=2000):
+    def train(self, X, y, X_valid, y_valid, epochs=2000):
         best_fitness = -1
         best_chormesome = None
+        best_chormesome_valid = None
+        best_fitness_valid = -1
 
         d = X.shape[1]
 
@@ -53,7 +55,13 @@ class Population:
                 best_fitness = fitnesses[sort_index[-1]]
                 best_chormesome = copy.deepcopy(self.population[sort_index[-1]])
 
-            print("> Epoch {0}: Best fitness {1}".format(e + 1, best_fitness))
+            valid_fitness = best_chormesome.compute_fitness(X_valid, y_valid)
+
+            if valid_fitness > best_fitness_valid:
+                best_fitness_valid = valid_fitness
+                best_chormesome_valid = copy.deepcopy(best_chormesome)
+
+            print("> Epoch {0}: Best fitness {1}  -  Best valid fitness {2}".format(e + 1, best_fitness, best_fitness_valid))
             # Produce
             self.next_population = []
 

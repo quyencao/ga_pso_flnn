@@ -60,14 +60,22 @@ class Model:
 
         data_X = np.concatenate((data_x_not_expanded, data_expanded), axis=1)
 
-        self.X_train, self.X_test, self.y_train, self.y_test = data_X[:train_idx, :], data_X[train_idx:, :], data_y[:train_idx,:], data_y[train_idx:, :]
+        idx1 = train_idx - test_idx
+        idx2 = idx1 + test_idx
+        idx3 = idx2 + test_idx
+
+        self.X_train, self.X_valid, self.X_test, self.y_train, self.y_valid, self.y_test = data_X[:idx1, :], data_X[idx1:idx2, :], data_X[idx2:idx3, :], data_y[:idx1, :], data_y[idx1:idx2, :], data_y[idx2:idx3, :] 
+        # self.X_train, self.X_test, self.y_train, self.y_test = data_X[:train_idx, :], data_X[train_idx:, :], data_y[:train_idx,:], data_y[train_idx:, :]
+        print(self.X_train.shape)
+        print(self.X_valid.shape)
+        print(self.X_test.shape)
 
     def train(self, epochs=2000):
         self.preprocessing_data()
 
         p = Population(self.pop_size, self.c1, self.c2, activation=self.activation)
 
-        best = p.train(self.X_train, self.y_train, epochs=epochs)
+        best = p.train(self.X_train, self.y_train, self.X_valid, self.y_valid, epochs=epochs)
 
         pred = best.predict(self.X_test)
 

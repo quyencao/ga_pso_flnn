@@ -123,8 +123,9 @@ class Model:
             dw = 1./m * np.matmul(self.X_train.T, dz)
 
             # Update weights
-            w -= 0.2 * dw
-            b -= 0.2 * db
+            w -= 0.1 * dw
+            b -= 0.1 * db
+
 
         z = np.dot(self.X_test, w) + b
         a = self.activation_output(z)
