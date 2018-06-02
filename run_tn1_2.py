@@ -16,7 +16,7 @@ foldername = 'data/'
 # parameters
 list_idx = [(10560, 2640), (6640, 1660), (4160, 1040), (3280, 820)]
 sliding_windows = [2, 3, 4, 5, 6]
-methods = ['FLNN']
+methods = ['PSO']
 
 for index, filename in enumerate(filenames):
 
@@ -39,6 +39,6 @@ for index, filename in enumerate(filenames):
                             activation=1, data_filename=f, test="tn1")
                 p.train(epochs=1000)
             elif method == 'FLNN':
-                p = FLNNModel(dataset_original, idx[0], idx[1], sw, expand_func = 0, activation = 2, data_filename=f, test="tn1")
-                p.train(epochs=10000)
+                p = FLNNModel(dataset_original, idx[0], idx[1], sw, expand_func = 0, activation = 1, data_filename=f, test="tn1")
+                p.train(epochs=1000)
 
