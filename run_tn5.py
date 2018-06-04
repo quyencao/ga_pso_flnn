@@ -6,15 +6,15 @@ filename2 = 'data_resource_usage_5Minutes_6176858948.csv'
 filename3 = 'data_resource_usage_8Minutes_6176858948.csv'
 filename4 = 'data_resource_usage_10Minutes_6176858948.csv'
 
-filenames = [filename4]
-fses = ['10_minutes']
+filenames = [filename3]
+fses = ['8_minutes']
 
 foldername = 'data/'
 
 # parameters
-list_idx = [(3280, 820)]
-sliding_windows = [4]
-pop_sizes = [100]
+list_idx = [(4160, 1040)]
+sliding_windows = [2, 3, 4, 5, 6]
+pop_sizes = [20, 40, 60, 80, 100, 120, 140, 160, 180, 200]
 cross_rates = [0.7, 0.75, 0.8, 0.85, 0.9]
 mutate_rates = [0.01, 0.02, 0.03, 0.04, 0.05]
 
