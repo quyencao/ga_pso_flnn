@@ -12,10 +12,10 @@ class Population:
         self.s = s
         self.c1 = c1
         self.c2 = c2
-        self.c = c1 + c2
-        self.theta = 2 / (self.c - 2 + np.sqrt(np.square(self.c) - 4 * self.c))
+        # self.c = c1 + c2
+        # self.theta = 2 / (self.c - 2 + np.sqrt(np.square(self.c) - 4 * self.c))
         self.activation = activation
-        self.Vmax = 10
+        self.Vmax = 1
         self.w = 0.729
         self.w_max = 0.9
         self.w_min = 0.4
@@ -56,7 +56,7 @@ class Population:
             print("> Epoch {0}: Best fitness {1}   -   Best valid fitness {2}".format(e + 1, best_fitness, best_fitness_valid))
 
             for p in self.population:
-                # self.w = (1 - e / epochs) * (self.w_max - self.w_min) + self.w_min
+                # w = (1 - e / epochs) * (self.w_max - self.w_min) + self.w_min
                 # v_new = self.theta * (p.v + self.c1 * np.random.uniform(low=0,high=1,size=(p.n, 1)) * (p.pbest - p.x) + self.c2 *  np.random.uniform(low=0,high=1,size=(p.n, 1)) * (best_particle.pbest - p.x))
                 v_new = self.w * p.v + self.c1 * np.random.uniform(low=0 ,high=1 ,size=(p.n + 1, 1)) * \
                             (p.pbest - p.x) + self.c2 * np.random.uniform(low=0, high=1, size=(p.n + 1, 1)) * (

@@ -192,3 +192,5 @@
 10_minutes-GA-FLNN-sliding_4-expand_func_0-pop_size_100-pc_0.8-pm_0.02-activation_1  -  0.318834407275  -  0.547502847974
 10_minutes-GA-FLNN-sliding_5-expand_func_0-pop_size_100-pc_0.8-pm_0.02-activation_1  -  0.300585714475  -  0.530847177691
 10_minutes-GA-FLNN-sliding_6-expand_func_0-pop_size_100-pc_0.8-pm_0.02-activation_1  -  0.300694475047  -  0.524200488729
+3_minutes-PSO-FLNN-sliding_2-expand_func_0-pop_size_100-c1_1.2-c2_1.2-activation_1  -  0.225492598863  -  0.458170707665
+3_minutes-PSO-FLNN-sliding_3-expand_func_0-pop_size_100-c1_1.2-c2_1.2-activation_1  -  0.224874174995  -  0.459215861393

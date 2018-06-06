@@ -46,7 +46,7 @@ for index, filename in enumerate(filenames):
                         for mr in mutate_rates:
                             p = GAModel(dataset_original, idx[0], idx[1], sliding_windows[0],
                                         expand_func=ef, pop_size=pop_size, pc=cr, pm=mr,
-                                        activation=1, data_filename=f, test="tn5")
+                                        activation=1, data_filename=f, test="tn3")
                             p.train(epochs=1000)
 
         if method == 'PSO':
@@ -56,6 +56,6 @@ for index, filename in enumerate(filenames):
                         for c2 in c2s:
                             p = PSOModel(dataset_original, idx[0], idx[1], sliding_windows[0],
                                          expand_func=ef, pop_size=pop_size, c1=c1, c2=c2,
-                                         activation=1, data_filename=f, test="tn4")
+                                         activation=1, data_filename=f, test="tn3")
                             p.train(epochs=1000)
 

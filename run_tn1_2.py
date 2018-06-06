@@ -16,7 +16,7 @@ foldername = 'data/'
 # parameters
 list_idx = [(10560, 2640), (6640, 1660), (4160, 1040), (3280, 820)]
 sliding_windows = [2, 3, 4, 5, 6]
-methods = ['GA']
+methods = ['PSO', 'GA', 'FLNN']
 
 for index, filename in enumerate(filenames):
 

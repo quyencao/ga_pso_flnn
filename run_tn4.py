@@ -6,16 +6,16 @@ filename2 = 'data_resource_usage_5Minutes_6176858948.csv'
 filename3 = 'data_resource_usage_8Minutes_6176858948.csv'
 filename4 = 'data_resource_usage_10Minutes_6176858948.csv'
 
-filenames = [filename3]
-fses = ['8_minutes']
+filenames = [filename1]
+fses = ['3_minutes']
 
 foldername = 'data/'
 
 # parameters
-list_idx = [(4160, 1040)]
+list_idx = [(11120, 2780)]
 c1s = [0.7, 1.2, 1.5, 1.7, 2]
 c2s = [0.7, 1.2, 1.5, 1.7, 2]
-sliding_windows = [2, 3, 4, 5, 6]
+sliding_windows = [2, 3, 4, 5, 6, 7, 8, 9, 10]
 pop_sizes = [20, 40, 60, 80, 100, 120, 140, 160, 180, 200]
 
 for index, filename in enumerate(filenames):
@@ -33,6 +33,6 @@ for index, filename in enumerate(filenames):
             for c2 in c2s:
                 p = PSOModel(dataset_original, idx[0], idx[1], sliding_windows[0],
                              expand_func=0, pop_size=pop_size, c1=c1, c2=c2,
-                             activation=3, data_filename=f, test="tn4")
+                             activation=1, data_filename=f, test="tn4")
                 p.train(epochs=1000)
 
