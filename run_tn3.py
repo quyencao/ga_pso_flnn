@@ -15,14 +15,13 @@ fses = ['3m']
 foldername = 'data/'
 
 # parameters
-list_idx = [(10560, 2640)]
-c_couple = [(2, 2)]
+list_idx = [(11120, 2780)]
 cross_rates = [0.7, 0.75, 0.8, 0.85, 0.9]
 mutate_rates = [0.01, 0.02, 0.03, 0.04, 0.05]
-c1s = [0.7, 1.2, 1.5, 1.7, 2]
-c2s = [0.7, 1.2, 1.5, 1.7, 2]
+c1s = [0.7, 1.2, 1.5, 1.7, 2.0]
+c2s = [0.7, 1.2, 1.5, 1.7, 2.0]
 sliding_windows = [4]
-pop_sizes = [20, 60, 100, 140, 200]
+pop_sizes = [100]
 method_statistic = [0]
 methods = ['GA', 'PSO']
 activations = [1]

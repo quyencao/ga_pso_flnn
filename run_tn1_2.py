@@ -14,7 +14,7 @@ fses = ['3_minutes', '5_minutes','8_minutes', '10_minutes']
 foldername = 'data/'
 
 # parameters
-list_idx = [(10560, 2640), (6640, 1660), (4160, 1040), (3280, 820)]
+list_idx = [(11120, 2780), (6640, 1660), (4160, 1040), (3280, 820)]
 sliding_windows = [2, 3, 4, 5, 6]
 methods = ['PSO', 'GA', 'FLNN']
 

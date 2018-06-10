@@ -450,3 +450,4 @@
 3_minutes-GA-FLNN-sliding_2-expand_func_0-pop_size_20-pc_0.75-pm_0.05-activation_1  -  0.245915318547  -  0.397760284398
 3_minutes-GA-FLNN-sliding_2-expand_func_0-pop_size_20-pc_0.8-pm_0.01-activation_1  -  0.236217392649  -  0.419769391373
 3_minutes-GA-FLNN-sliding_2-expand_func_0-pop_size_20-pc_0.8-pm_0.02-activation_1  -  0.231615357302  -  0.401040865654
+3_minutes-GA-FLNN-sliding_2-expand_func_0-pop_size_20-pc_0.7-pm_0.01-activation_1  -  0.300351655696  -  0.479932115704

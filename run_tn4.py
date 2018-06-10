@@ -15,7 +15,7 @@ foldername = 'data/'
 list_idx = [(11120, 2780)]
 c1s = [0.7, 1.2, 1.5, 1.7, 2]
 c2s = [0.7, 1.2, 1.5, 1.7, 2]
-sliding_windows = [2, 3, 4, 5, 6, 7, 8, 9, 10]
+sliding_windows = [2, 3, 4, 5, 6]
 pop_sizes = [20, 40, 60, 80, 100, 120, 140, 160, 180, 200]
 
 for index, filename in enumerate(filenames):

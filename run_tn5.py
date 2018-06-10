@@ -13,7 +13,7 @@ foldername = 'data/'
 
 # parameters
 list_idx = [(11120, 2780)]
-sliding_windows = [2, 3, 4, 5, 6, 7, 8, 9, 10]
+sliding_windows = [2, 3, 4, 5, 6]
 pop_sizes = [20, 40, 60, 80, 100, 120, 140, 160, 180, 200]
 cross_rates = [0.7, 0.75, 0.8, 0.85, 0.9]
 mutate_rates = [0.01, 0.02, 0.03, 0.04, 0.05]
