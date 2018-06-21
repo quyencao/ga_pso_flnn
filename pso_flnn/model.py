@@ -66,9 +66,9 @@ class Model:
 
         self.X_train, self.X_valid, self.X_test, self.y_train, self.y_valid, self.y_test = data_X[:idx1, :], data_X[idx1:idx2, :], data_X[idx2:idx3, :], data_y[:idx1, :], data_y[idx1:idx2, :], data_y[idx2:idx3, :] 
         # self.X_train, self.X_test, self.y_train, self.y_test = data_X[:train_idx, :], data_X[train_idx:, :], data_y[:train_idx,:], data_y[train_idx:, :]
-        print(self.X_train.shape)
-        print(self.X_valid.shape)
-        print(self.X_test.shape)
+        # print(self.X_train.shape)
+        # print(self.X_valid.shape)
+        # print(self.X_test.shape)
 
     def train(self, epochs=2000):
         self.preprocessing_data()
